@@ -11,16 +11,22 @@ public_folder: /images
 site_url: "https://astro-decapcms-starter.netlify.app/" # your site name
 
 collections:
-  - name: post
-    label: Posts
-    folder: src/content/posts
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: src/content/portfolio
     create: true
-    format: frontmatter
-    preview_path: post/{{slug}}
+    slug: "{{year}}-{{month}}-{{slug}}"
     fields:
-      - { name: title, label: Title }
-      - { name: description, label: Description }
-      - { name: publishedAt, label: Date, widget: date }
-      - {label: "Publish", name: "isPublish", widget: "boolean", default: true}
-      - {label: "Draft", name: "isDraft", widget: "boolean", default: false}
-      - { name: body, label: Body, widget: markdown }
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Photo Principale", name: "heroImage", widget: "image" }
+      - { label: "Catégorie", name: "category", widget: "select", options: }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dexmfv667
+    api_key: kXR0nuyBkLGiiI94dT6Uw_O6XJA
+    default_transformations:
+      - [q_auto, f_auto] # Optimisation auto qualité/format
