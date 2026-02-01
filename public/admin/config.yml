@@ -1,14 +1,10 @@
 backend:
   name: github
-  repo: gxanshu/astro-decap-cms-starter #replace with your githu repo
+  repo: MickaKymm95/portfolio
   branch: main
-  squash_merges: true
-  open_authoring: true
 
-publish_mode: editorial_workflow
 media_folder: public/images
 public_folder: /images
-site_url: "https://astro-decapcms-starter.netlify.app/" # your site name
 
 collections:
   - name: "portfolio"
@@ -17,16 +13,33 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{slug}}"
     fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Photo Principale", name: "heroImage", widget: "image" }
-      - { label: "Catégorie", name: "category", widget: "select", options: }
-      - { label: "Description", name: "body", widget: "markdown" }
-
-media_library:
-  name: cloudinary
-  config:
-    cloud_name: dexmfv667
-    api_key: kXR0nuyBkLGiiI94dT6Uw_O6XJA
-    default_transformations:
-      - [q_auto, f_auto] # Optimisation auto qualité/format
+      - label: "Titre"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "publishedAt"
+        widget: "datetime"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Photo"
+        name: "heroImage"
+        widget: "image"
+        required: false
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        required: false
+        options:
+          - "Portrait"
+          - "Paysage"
+          - "Mariage"
+          - "Événement"
+          - "Autre"
+      - label: "Publier"
+        name: "isPublish"
+        widget: "boolean"
+        default: true
+      - label: "Contenu"
+        name: "body"
+        widget: "markdown"
