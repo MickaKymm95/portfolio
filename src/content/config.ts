@@ -8,7 +8,9 @@ const postsCollection = defineCollection({
     description: z.string(),
     isPublish: z.boolean(),
     isDraft: z.boolean().default(false),
+    heroImage: z.string().optional(),
+    category: z.string().optional(),
   }),
 });
 
-export const collections = { portfolio: postsCollection };
+export const collections = { portfolio: postsCollection, posts: postsCollection };
